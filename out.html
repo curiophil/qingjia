@@ -483,7 +483,7 @@
                                                                                  title=""
                                                                                  class="infoplus_control infoplus_labelControl inline"
                                                                                  id="label_eaaf9e08-eea7-4ea7-b279-451e870ee6a1">
-                                                                                341200199802291475
+                                                                                <span id="id-card">341200199802291475</span>
                                                                             </div>
                                                                             <input type="hidden" id="V0_CTRL240"
                                                                                    name="fieldSFZH"
@@ -511,7 +511,7 @@
                                                                                  title=""
                                                                                  class="infoplus_control infoplus_labelControl inline"
                                                                                  id="label_4549325a-fe9f-4018-b907-e5202330ba6f">
-                                                                                王庆山
+                                                                                <span class="fdy">王庆山</span>
                                                                             </div>
                                                                             <input type="hidden" id="V0_CTRL162"
                                                                                    name="fieldFDYXM" value="003561">
@@ -534,7 +534,7 @@
                                                                                  title=""
                                                                                  class="infoplus_control infoplus_labelControl inline"
                                                                                  id="label_2193d0f6-f733-40f3-b05d-866093a6195b">
-                                                                                刘强云
+                                                                                <span id="ds">刘强云</span>
                                                                             </div>
                                                                             <input type="hidden" id="V0_CTRL256"
                                                                                    name="fieldDSXM" value="002058">
@@ -1258,7 +1258,7 @@
                                                                                  title=""
                                                                                  class="infoplus_control infoplus_labelControl inline"
                                                                                  id="label_9ae195e9-1e64-4dc6-bbf5-c8c968e5a190">
-                                                                                王庆山
+                                                                                <span class="fdy">王庆山</span>
                                                                             </div>
                                                                             <input type="hidden" id="V0_CTRL145"
                                                                                    name="fieldFDYSPR" value="003561"
@@ -2332,7 +2332,7 @@
                         </li>
                         <li class="remark_item" style="display: block;">
                             <div class="form_remark_title"><span class="color_b2" style=""><span
-                                    class=""><b>王庆山</b></span>填写/办理了<b><a target="_blank" title="view snapshot"
+                                    class=""><b><span class="fdy">王庆山</span></b></span>填写/办理了<b><a target="_blank" title="view snapshot"
                                                                                   href="/infoplus/form/3936478/render?snapshot=true">辅导员审核意见</a></b>(<span
                                     class="color_b3"><b>提交</b></span>)</span><span
                                     class="form_remark_time remark_display_time">
@@ -2365,27 +2365,17 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="js/common.js"></script>
 <script>
-    // document.getElementById("hour").innerText = Math.ceil(Math.random() * 3)
-
-    function getParams(name) {
-        var query = window.location.search.substring(1);
-        if(!query) {
-            return false;
-        }
-        var strArr = query.split("&");
-        for (var i=0;i<strArr.length;i++) {
-            var pair = strArr[i].split("=");
-            if(pair[0] == name){return pair[1];}
-        }
-        return false;
-    }
 
     let name = getParams('name')
     let tel= getParams('tel')
     let gender = getParams('gender')
     let xuehao = getParams('xuehao')
     let liyou = getParams('liyou')
+    let id= getParams('id')
+    let fdy= getParams('fdy')
+    let ds= getParams('ds')
 
     if (name) {
         name = window.decodeURIComponent(name)
@@ -2417,21 +2407,18 @@
         document.getElementById("liyou").innerText = liyou
     }
 
-
-
-    let formatDate = (date, split) => {
-        window.console.log(date)
-        const d = new Date(date)
-        const y = d.getFullYear() // 年份
-        const m = (d.getMonth() + 1).toString().padStart(2, '0') // 月份
-        const r = d.getDate().toString().padStart(2, '0') // 日子
-        const hh = d.getHours().toString().padStart(2, '0') // 小时
-        const mm = d.getMinutes().toString().padStart(2, '0') // 分钟
-        const ss = d.getSeconds().toString().padStart(2, '0') // 秒
-        if (split) {
-            return `${y}${split}${m}${split}${r} ${hh}:${mm}:${ss}`
+    if (id) {
+        document.getElementById("id-card").innerText = id
+    }
+    if (fdy) {
+        fdy = window.decodeURIComponent(fdy)
+        let elementsByClassName = document.getElementsByClassName("fdy");
+        for (let i = 0; i < elementsByClassName.length; ++i) {
+            elementsByClassName[i].innerText = fdy
         }
-        return `${y}-${m}-${r} ${hh}:${mm}:${ss}`// es6 字符串模板
+    }
+    if (ds) {
+        document.getElementById("ds").innerText = window.decodeURIComponent(ds)
     }
 
 
